@@ -28,7 +28,7 @@ const addSupplierToDOM = (supplier) => {
                   class="material-icons"
                   data-toggle="tooltip"
                   title="Edit"
-                  onclick="selectProduct(${supplier.supplier_id})"
+                  onclick="selectSupplier(${supplier.supplier_id})"
                   >&#xE254;</i
                 ></a
               >
@@ -40,7 +40,7 @@ const addSupplierToDOM = (supplier) => {
                   class="material-icons"
                   data-toggle="tooltip"
                   title="Delete"
-                  onclick="removeProduct(${supplier.supplier_id})"
+                  onclick="removeSupplier(${supplier.supplier_id})"
                   >&#xE872;</i
                 ></a
               >
