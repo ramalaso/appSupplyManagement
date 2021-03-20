@@ -3,58 +3,52 @@ const getSuppliers = async () => {
   const suppliers = await response.json();
   return suppliers.rows;
 };
-// function getSuppliers() {
-//   fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers')
-//   .then(response => response.json())
-//   .then(data => data);
-// }
 
-
-const txtAddName = document.getElementById("addName");
-const txtAddQuantity = document.getElementById("addQuantity");
-const txtAddPrice = document.getElementById("addPrice");
-const txtUpdateName = document.getElementById("updateName");
-const txtUpdateQuantity = document.getElementById("updateQuantity");
-const txtUpdatePrice = document.getElementById("updatePrice");
-const txtUpdateId = document.getElementById("updateId");
-const btnSubmitAdd = document.getElementById("submitAdd");
-const lblIdDelete = document.getElementById("idDelete");
+// const txtAddName = document.getElementById("addName");
+// const txtAddQuantity = document.getElementById("addQuantity");
+// const txtAddPrice = document.getElementById("addPrice");
+// const txtUpdateName = document.getElementById("updateName");
+// const txtUpdateQuantity = document.getElementById("updateQuantity");
+// const txtUpdatePrice = document.getElementById("updatePrice");
+// const txtUpdateId = document.getElementById("updateId");
+// const btnSubmitAdd = document.getElementById("submitAdd");
+// const lblIdDelete = document.getElementById("idDelete");
 const tableRef = document.getElementsByTagName("tbody")[0];
-const btnSaveChanges = document.getElementById("saveChanges");
-const btnDeleteAccepted = document.getElementById("deleteAccepted");
-const txtInventoryId = document.getElementById("inventoryId");
-const txtInventoryName = document.getElementById("inventoryName");
-const txtInventoryQuantity = document.getElementById("inventoryQuantity");
-// const btnAddInventory = document.getElementById("addInventory");
+// const btnSaveChanges = document.getElementById("saveChanges");
+// const btnDeleteAccepted = document.getElementById("deleteAccepted");
+// const txtInventoryId = document.getElementById("inventoryId");
+// const txtInventoryName = document.getElementById("inventoryName");
+// const txtInventoryQuantity = document.getElementById("inventoryQuantity");
 
-btnSaveChanges.addEventListener("click", updateProduct);
-btnDeleteAccepted.addEventListener("click", removeProductAccepted);
-// btnAddInventory.addEventListener("click", addInventoryAccepted);
 
-const localStorageTransactions = JSON.parse(localStorage.getItem("products"));
-let products =
-  localStorage.getItem("products") !== null ? localStorageTransactions : [];
+// btnSaveChanges.addEventListener("click", updateProduct);
+// btnDeleteAccepted.addEventListener("click", removeProductAccepted);
 
-const addProduct = (e) => {
-  e.preventDefault();
-  const newProduct = {
-    ID: Date.now(),
-    Name: txtAddName.value,
-    Price: txtAddPrice.value,
-    Quantity: txtAddQuantity.value,
-  };
-  products.push(newProduct);
-  addProductToDOM(newProduct);
-  updateLocalStorage();
-  init();
-  clearAddTable();
-};
 
-const clearAddTable = () => {
-  txtAddPrice.value = "";
-  txtAddName.value = "";
-  txtAddQuantity.value = "";
-};
+// const localStorageTransactions = JSON.parse(localStorage.getItem("products"));
+// let products =
+//   localStorage.getItem("products") !== null ? localStorageTransactions : [];
+
+// const addProduct = (e) => {
+//   e.preventDefault();
+//   const newProduct = {
+//     ID: Date.now(),
+//     Name: txtAddName.value,
+//     Price: txtAddPrice.value,
+//     Quantity: txtAddQuantity.value,
+//   };
+//   products.push(newProduct);
+//   addProductToDOM(newProduct);
+//   updateLocalStorage();
+//   init();
+//   clearAddTable();
+// };
+
+// const clearAddTable = () => {
+//   txtAddPrice.value = "";
+//   txtAddName.value = "";
+//   txtAddQuantity.value = "";
+// };
 
 async function init() {
   const suppliers = await getSuppliers();
@@ -64,9 +58,9 @@ async function init() {
   suppliers.forEach(addSupplierToDOM);
 }
 
-updateLocalStorage = () => {
-  localStorage.setItem("products", JSON.stringify(products));
-};
+// updateLocalStorage = () => {
+//   localStorage.setItem("products", JSON.stringify(products));
+// };
 
 // function updateProducts(id)
 
@@ -117,54 +111,54 @@ const addSupplierToDOM = (supplier) => {
   newRow.innerHTML = row;
 };
 
-function selectProduct(id) {
-  const product = products.filter((product) => product.ID == id);
-  txtUpdateName.value = product[0].Name;
-  txtUpdatePrice.value = product[0].Price;
-  txtUpdateQuantity.value = product[0].Quantity;
-  txtUpdateId.value = id;
-}
+// function selectProduct(id) {
+//   const product = products.filter((product) => product.ID == id);
+//   txtUpdateName.value = product[0].Name;
+//   txtUpdatePrice.value = product[0].Price;
+//   txtUpdateQuantity.value = product[0].Quantity;
+//   txtUpdateId.value = id;
+// }
 
-function addInventory(id) {
-  const product = products.filter((product) => product.ID == id);
-  txtInventoryName.value = product[0].Name;
-  txtInventoryId.value = id;
-}
+// function addInventory(id) {
+//   const product = products.filter((product) => product.ID == id);
+//   txtInventoryName.value = product[0].Name;
+//   txtInventoryId.value = id;
+// }
 
-function addInventoryAccepted(e) {
-  e.preventDefault();
-  const id = parseInt(txtInventoryId.value);
-  const productsIndex = products.map((product) => product.ID);
-  const index = productsIndex.indexOf(id);
-  products[index].Quantity =
-    +products[index].Quantity + parseInt(txtInventoryQuantity.value);
-  txtInventoryQuantity.value = "";
-  updateLocalStorage();
-  init();
-}
+// function addInventoryAccepted(e) {
+//   e.preventDefault();
+//   const id = parseInt(txtInventoryId.value);
+//   const productsIndex = products.map((product) => product.ID);
+//   const index = productsIndex.indexOf(id);
+//   products[index].Quantity =
+//     +products[index].Quantity + parseInt(txtInventoryQuantity.value);
+//   txtInventoryQuantity.value = "";
+//   updateLocalStorage();
+//   init();
+// }
 
-function updateProduct(e) {
-  e.preventDefault();
-  const id = parseInt(txtUpdateId.value);
-  const productsIndex = products.map((product) => product.ID);
-  const index = productsIndex.indexOf(id);
-  products[index].Name = txtUpdateName.value;
-  products[index].Price = txtUpdatePrice.value;
-  products[index].Quantity = txtUpdateQuantity.value;
-  updateLocalStorage();
-  init();
-}
+// function updateProduct(e) {
+//   e.preventDefault();
+//   const id = parseInt(txtUpdateId.value);
+//   const productsIndex = products.map((product) => product.ID);
+//   const index = productsIndex.indexOf(id);
+//   products[index].Name = txtUpdateName.value;
+//   products[index].Price = txtUpdatePrice.value;
+//   products[index].Quantity = txtUpdateQuantity.value;
+//   updateLocalStorage();
+//   init();
+// }
 
-function removeProduct(id) {
-  lblIdDelete.innerHTML = id;
-}
+// function removeProduct(id) {
+//   lblIdDelete.innerHTML = id;
+// }
 
-function removeProductAccepted() {
-  const id = parseInt(lblIdDelete.innerText);
-  products = products.filter((product) => product.ID !== id);
-  updateLocalStorage();
-  init();
-}
-// createTable();
-btnSubmitAdd.addEventListener("click", addProduct);
+// function removeProductAccepted() {
+//   const id = parseInt(lblIdDelete.innerText);
+//   products = products.filter((product) => product.ID !== id);
+//   updateLocalStorage();
+//   init();
+// }
+// // createTable();
+// btnSubmitAdd.addEventListener("click", addProduct);
 init();
