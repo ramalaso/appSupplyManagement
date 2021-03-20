@@ -44,15 +44,6 @@ const addSupplierToDOM = (supplier) => {
                   >&#xE872;</i
                 ></a
               >
-              <a href="#addInventoryModal" class="inventory" data-toggle="modal"
-                ><i
-                  class="material-icons"
-                  data-toggle="tooltip"
-                  title="Add Inventory"
-                  onclick="addInventory(${supplier.supplier_id})"
-                  >&#xE147;</i>
-                </a
-              >
             </td>
           </tr>
           <tr>
