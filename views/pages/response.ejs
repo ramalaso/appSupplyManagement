@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+
+  <%- include ("../partials/nav.ejs") %>
+
+<div class="jumbotron text-center" style="height: 90vh;">
+  <div class="container">
+    <a href="/" class="lang-logo">
+      <img src="/images.png">
+    </a>
+    <h1>Welcome to LCG delivery company </h1>
+    <form style="width: 60%; margin: auto; border: 2px solid white; border-radius: 5px; padding: 20px;">
+      <h3>Price Calculator</h3>
+      <h4>Your price is <%= price %>   </h4>
+    </form>
+  </div>
+</div>
+</body>
+</html>
