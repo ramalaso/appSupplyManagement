@@ -87,6 +87,7 @@ function RedirectToMain(e) {
   e.preventDefault();
   console.log(supplier_name, supplier_address)
   postSupplier(supplier_name, supplier_address, supplier_contact, supplier_details)
+  postSupplier("Ramalaso", "Antofagasta 1255", "Rama", "Details")
   window.location.href = "https://gentle-anchorage-20332.herokuapp.com";
 }
 
