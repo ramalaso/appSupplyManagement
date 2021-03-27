@@ -20,10 +20,10 @@ const postSuppliers = async (name, address, contact, details) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      name: name,
-      address: address,
-      contact: contact,
-      details: details,
+      name: supplier_name,
+      address: supplier_address,
+      contact: supplier_contact,
+      details: supplier_details,
     })
   });
   const supplier = await response.json();
