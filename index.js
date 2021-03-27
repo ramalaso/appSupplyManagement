@@ -20,6 +20,10 @@ app.get('/suppliers', (req, res)=>{
   res.render('pages/suppliers')
 })
 
+app.get('/inventory', (req, res)=>{
+  res.render('pages/inventory')
+})
+
 app.use('/api/v1/suppliers', suppliers)
 
 app .listen(PORT, () => console.log(`Listening on ${ PORT }`))
