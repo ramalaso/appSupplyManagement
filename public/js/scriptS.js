@@ -93,7 +93,7 @@ const getSupplier = async (id) => {
 }
 
 async function selectSupplier(id) {
-    const supplier = await getSupplier();
+    const supplier = await getSupplier(id);
     txtUpdateId.value = supplier.supplier_id;
     txtUpdateName.value = supplier.supplier_name;
     txtUpdateAddress.value = supplier.supplier_address;
