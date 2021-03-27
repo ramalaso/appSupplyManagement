@@ -1,9 +1,11 @@
 const tableRef = document.getElementsByTagName("tbody")[0];
-const supplier_name = document.getElementById("addName").innerText;
-const supplier_address = document.getElementById("addAddress").innerText;
-const supplier_contact = document.getElementById("addContact").innerText;
-const supplier_details = document.getElementById("addDetails").innerText;
+const supplier_name = document.getElementById("addName");
+const supplier_address = document.getElementById("addAddress");
+const supplier_contact = document.getElementById("addContact");
+const supplier_details = document.getElementById("addDetails");
 const bntAddSuppliers = document.getElementById("submitAdd");
+
+bntAddSuppliers.addEventListener('click', RedirectToMain);
 
 const getSuppliers = async () => {
   const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers');
@@ -18,17 +20,17 @@ const removeSupplier =  (id) => {
   window.location.href = "https://gentle-anchorage-20332.herokuapp.com";
 };
 
-const postSupplier = (name, address, contact, details) => {
+const postSupplier = () => {
   fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      name,
-      address,
-      contact,
-      details,
+      name: supplier_name.value,
+      address: supplier_address.value,
+      contact: supplier_contact.value,
+      details: supplier_details.value,
     })
   });
 }
@@ -78,14 +80,9 @@ const addSupplierToDOM = (supplier) => {
   newRow.innerHTML = row;
 };
 
-
-bntAddSuppliers.addEventListener('click', RedirectToMain);
-
 function RedirectToMain(e) {
   e.preventDefault();
-  console.log(supplier_name, supplier_address)
-  postSupplier(supplier_name, supplier_address, supplier_contact, supplier_details)
-  postSupplier("Ramalaso", "Antofagasta 1255", "Rama", "Details")
+  postSupplier()
   window.location.href = "https://gentle-anchorage-20332.herokuapp.com";
 }
 
