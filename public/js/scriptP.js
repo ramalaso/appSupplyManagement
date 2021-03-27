@@ -66,11 +66,11 @@ const putProduct = (id) => {
 
 //Working with DOM
 async function init() {
-  const products = await getSuppliers();
+  const products = await getProducts();
   console.log("We are in init function")
   console.log(products);
   tableRef.innerHTML = "";
-  suppliers.forEach(addProductToDOM);
+  products.forEach(addProductToDOM);
 }
 
 const addProductToDOM = (product) => {
