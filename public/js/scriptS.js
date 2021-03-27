@@ -86,7 +86,7 @@ const addSupplierToDOM = (supplier) => {
   newRow.innerHTML = row;
 };
 
-function getSupplier(id) {
+const getSupplier = async (id) => {
   const response = await fetch(`https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers/${id}`);
   const supplier = await response.json();
   return supplier;
