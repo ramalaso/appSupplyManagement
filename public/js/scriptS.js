@@ -64,7 +64,6 @@ const addSupplierToDOM = (supplier) => {
                 ></a
               >
               <a
-                class="delete"
                 ><i
                   class="material-icons"
                   data-toggle="tooltip"
@@ -81,7 +80,6 @@ const addSupplierToDOM = (supplier) => {
   newRow = tableRef.insertRow(tableRef.rows.length);
   newRow.innerHTML = row;
 };
-
 
 // bntAddSuppliers.addEventListener('click', postSuppliers(supplier_name, supplier_address, supplier_contact, supplier_details));
 
