@@ -118,7 +118,7 @@ async function selectProduct(id) {
     txtUpdateName.value = product[0].product_name;
     txtUpdateQuantity.value = product[0].product_quantity;
     txtUpdatePrice.value = product[0].product_price;
-    txtSupplierId.value = product[0].fk_supplier_id;
+    txtUpdateSupplierId.value = product[0].fk_supplier_id;
 }
 
 function saveChanges(e) {
