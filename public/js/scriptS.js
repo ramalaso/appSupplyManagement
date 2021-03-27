@@ -1,11 +1,35 @@
 const tableRef = document.getElementsByTagName("tbody")[0];
+const supplier_name = document.getElementById('addName');
+const supplier_address = document.getElementById('addAddress');
+const supplier_contact = document.getElementById('addContact');
+const supplier_details = document.getElementById('addDetails');
+const bntAddSuppliers = document.getElementById('submitAdd');
 
+bntAddSuppliers.addEventListener('click', postSuppliers(supplier_name, supplier_address, supplier_contact, supplier_details));
 
 const getSuppliers = async () => {
   const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers');
   const suppliers = await response.json();
   return suppliers;
 };
+
+const postSuppliers = async (name, address, contact, details) => {
+  const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: name,
+      address: address,
+      contact: contact,
+      details: details,
+    })
+  });
+  const supplier = await response.json();
+  window.location.href = "https://gentle-anchorage-20332.herokuapp.com";
+  return supplier;
+}
 
 async function init() {
   const suppliers = await getSuppliers();
