@@ -64,8 +64,8 @@ const addSupplierToDOM = (supplier) => {
                 ></a
               >
               <a
+                style="cursor: pointer;"
                 class="delete"
-                data-toggle="modal"
                 ><i
                   class="material-icons"
                   data-toggle="tooltip"
