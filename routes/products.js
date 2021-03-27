@@ -52,7 +52,7 @@ router.put('/:id', function(req, res, next) {
 //delete one product
 router.delete('/:id', function(req, res, next) {
     console.log("connected to database");
-    client.query('DELETE FROM products WHERE products_id = $1',[req.params.id], function(err, result) {
+    client.query('DELETE FROM products WHERE product_id = $1',[req.params.id], function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
