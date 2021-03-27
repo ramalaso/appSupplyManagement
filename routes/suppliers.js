@@ -42,7 +42,7 @@ router.get('/:id', function(req, res, next) {
   });
 // update supplier
 router.put('/:id', function(req, res, next) {
-    client.query('UPDATE suppliers SET supplier_address = $2, supplier_name = $3, supplier_contact = $4, supplier_details = $5   WHERE id = $1', [req.params.id, req.body.address, req.body.name, req.body.contact, req.body.details ], function(err, result) {
+    client.query('UPDATE suppliers SET supplier_address = $2, supplier_name = $3, supplier_contact = $4, supplier_details = $5   WHERE supplier_id = $1', [req.params.id, req.body.address, req.body.name, req.body.contact, req.body.details ], function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
@@ -52,7 +52,7 @@ router.put('/:id', function(req, res, next) {
 //delete one supplier
 router.delete('/:id', function(req, res, next) {
     console.log("connected to database");
-    client.query('DELETE FROM suppliers WHERE id = $1',[req.params.id], function(err, result) {
+    client.query('DELETE FROM suppliers WHERE supplier_id = $1',[req.params.id], function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
