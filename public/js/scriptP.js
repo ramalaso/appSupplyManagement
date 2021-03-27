@@ -3,7 +3,7 @@ const txtUpdateId = document.getElementById("updateId");
 const txtUpdateName = document.getElementById("updateName");
 const txtUpdateQuantity = document.getElementById("updateQuantity");
 const txtUpdatePrice = document.getElementById("updatePrice");
-const txtSupplierId = document.getElementById("updateSupplierId");
+const txtUpdateSupplierId = document.getElementById("updateSupplierId");
 const product_name = document.getElementById("addName");
 const product_quantity = document.getElementById("addQuantity");
 const product_price = document.getElementById("addPrice");
@@ -56,10 +56,10 @@ const putProduct = (id) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      name: product_name.value,
-      quantity: product_quantity.value,
-      price: product_price.value,
-      supplier_id: fk_supplier_id.value,
+      name: txtUpdateName.value,
+      quantity: txtUpdateQuantity.value,
+      price: txtUpdatePrice.value,
+      supplier_id: txtUpdateSupplierId.value,
     })
   });
 }
