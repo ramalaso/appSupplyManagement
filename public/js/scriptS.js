@@ -1,9 +1,15 @@
 const tableRef = document.getElementsByTagName("tbody")[0];
+const txtUpdateId = document.getElementById("updateId");
+const txtUpdateName = document.getElementById("updateName");
+const txtUpdateAddress = document.getElementById("updateAddress");
+const txtUpdateContact = document.getElementById("updateContact");
+const txtUpdateDetails = document.getElementById("updateDetails");
 const supplier_name = document.getElementById("addName");
 const supplier_address = document.getElementById("addAddress");
 const supplier_contact = document.getElementById("addContact");
 const supplier_details = document.getElementById("addDetails");
 const bntAddSuppliers = document.getElementById("submitAdd");
+
 
 bntAddSuppliers.addEventListener('click', postData);
 
@@ -79,6 +85,21 @@ const addSupplierToDOM = (supplier) => {
   newRow = tableRef.insertRow(tableRef.rows.length);
   newRow.innerHTML = row;
 };
+
+function getSupplier(id) {
+  const response = await fetch(`https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers/${id}`);
+  const supplier = await response.json();
+  return supplier;
+}
+
+async function selectSupplier(id) {
+    const supplier = await getSupplier();
+    txtUpdateId.value = supplier.supplier_id;
+    txtUpdateName.value = supplier.supplier_name;
+    txtUpdateAddress.value = supplier.supplier_address;
+    txtUpdateContact.value = supplier.supplier_contact;
+    txtUpdateDetails.value = supplier.supplier_details;
+}
 
 function postData(e) {
   e.preventDefault();
