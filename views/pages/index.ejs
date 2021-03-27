@@ -67,7 +67,7 @@
     <div id="addProductsModal" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form>
+          <form method="POST" action="/api/v1/suppliers" >
             <div class="modal-header">
               <h4 class="modal-title">Add New Supplier</h4>
               <button
@@ -82,7 +82,7 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>Supplier Name</label>
-                <input type="text" class="form-control" id="addName" required />
+                <input type="text" class="form-control" id="addName" name="name" required />
               </div>
               <div class="form-group">
                 <label>Supplier Address</label>
@@ -90,6 +90,7 @@
                   type="text"
                   class="form-control"
                   id="addAddress"
+                  name="address"
                   required
                 />
               </div>
@@ -99,6 +100,7 @@
                   type="text"
                   class="form-control"
                   id="addContact"
+                  name="contact"
                   required
                 />
               </div>

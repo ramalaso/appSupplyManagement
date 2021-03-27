@@ -19,8 +19,8 @@ const addSupplierToDOM = (supplier) => {
   row = `
     <tr>
             <td>${supplier.supplier_id}</td>
-            <td>${supplier.supplier_address}</td>
             <td>${supplier.supplier_name}</td>
+            <td>${supplier.supplier_address}</td>
             <td>${supplier.supplier_contact}</td>
             <td>
               <a href="#editProductModal" class="edit" data-toggle="modal"
