@@ -1,92 +1,93 @@
 const tableRef = document.getElementsByTagName("tbody")[0];
 const txtUpdateId = document.getElementById("updateId");
 const txtUpdateName = document.getElementById("updateName");
-const txtUpdateAddress = document.getElementById("updateAddress");
-const txtUpdateContact = document.getElementById("updateContact");
-const txtUpdateDetails = document.getElementById("updateDetails");
-const supplier_name = document.getElementById("addName");
-const supplier_address = document.getElementById("addAddress");
-const supplier_contact = document.getElementById("addContact");
-const supplier_details = document.getElementById("addDetails");
-const bntAddSuppliers = document.getElementById("submitAdd");
+const txtUpdateQuantity = document.getElementById("updateQuantity");
+const txtUpdatePrice = document.getElementById("updatePrice");
+const txtSupplierId = document.getElementById("updateSupplierId");
+const product_name = document.getElementById("addName");
+const product_quantity = document.getElementById("addQuantity");
+const product_price = document.getElementById("addPrice");
+const fk_supplier_id = document.getElementById("supplierId");
+const bntAddProducts = document.getElementById("submitAdd");
 const btnSaveChanges = document.getElementById("saveChanges");
 
-bntAddSuppliers.addEventListener('click', postData);
+bntAddProducts.addEventListener('click', postData);
 btnSaveChanges.addEventListener('click', saveChanges)
 
 // Handle API responses
-const getSuppliers = async () => {
-  const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers');
-  const suppliers = await response.json();
-  return suppliers;
+const getProducts = async () => {
+  const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/products');
+  const products = await response.json();
+  return products;
 };
 
-const getSupplier = async (id) => {
+const getProduct = async (id) => {
   const response = await fetch(`https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers/${id}`);
-  const supplier = await response.json();
-  return supplier;
+  const product = await response.json();
+  return product;
 }
 
-const removeSupplier =  (id) => {
-  fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers/'+id, { method: 'DELETE',});
+const removeProduct =  (id) => {
+  fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/products/'+id, { method: 'DELETE',});
   // const suppliers = await response.json();
   // return suppliers;
-  window.location.href = "https://gentle-anchorage-20332.herokuapp.com";
+  window.location.href = "https://gentle-anchorage-20332.herokuapp.com/inventory";
 };
 
-const postSupplier = () => {
-  fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers', {
+const postProduct = () => {
+  fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/products', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      name: supplier_name.value,
-      address: supplier_address.value,
-      contact: supplier_contact.value,
-      details: supplier_details.value,
+      name: product_name.value,
+      quantity: product_quantity.value,
+      price: product_price.value,
+      supplier_id: fk_supplier_id.value,
     })
   });
 }
 
-const putSupplier = (id) => {
-  fetch(`https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers/${id}`, {
+const putProduct = (id) => {
+  fetch(`https://gentle-anchorage-20332.herokuapp.com/api/v1/products/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      name: txtUpdateName.value,
-      address: txtUpdateAddress.value,
-      contact: txtUpdateContact.value,
-      details: txtUpdateDetails.value,
+      name: product_name.value,
+      quantity: product_quantity.value,
+      price: product_price.value,
+      supplier_id: fk_supplier_id.value,
     })
   });
 }
 
 //Working with DOM
 async function init() {
-  const suppliers = await getSuppliers();
+  const products = await getSuppliers();
   console.log("We are in init function")
-  console.log(suppliers);
+  console.log(products);
   tableRef.innerHTML = "";
-  suppliers.forEach(addSupplierToDOM);
+  suppliers.forEach(addProductToDOM);
 }
 
-const addSupplierToDOM = (supplier) => {
+const addProductToDOM = (product) => {
   row = `
     <tr>
-            <td>${supplier.supplier_id}</td>
-            <td>${supplier.supplier_name}</td>
-            <td>${supplier.supplier_address}</td>
-            <td>${supplier.supplier_contact}</td>
+            <td>${product.product_id}</td>
+            <td>${product.product_name}</td>
+            <td>${product.product_quantity}</td>
+            <td>${product.product_price}</td>
+            <td>${product.fk_supplier_id}</td>
             <td>
               <a href="#editProductModal" class="edit" data-toggle="modal"
                 ><i
                   class="material-icons"
                   data-toggle="tooltip"
                   title="Edit"
-                  onclick="selectSupplier(${supplier.supplier_id})"
+                  onclick="selectProduct(${product.product_id})"
                   >&#xE254;</i
                 ></a
               >
@@ -97,7 +98,7 @@ const addSupplierToDOM = (supplier) => {
                   class="material-icons"
                   data-toggle="tooltip"
                   title="Delete"
-                  onclick="removeSupplier(${supplier.supplier_id})"
+                  onclick="removeProduct(${product.product_id})"
                   >&#xE872;</i
                 ></a
               >
@@ -110,27 +111,27 @@ const addSupplierToDOM = (supplier) => {
   newRow.innerHTML = row;
 };
 
-async function selectSupplier(id) {
-    const supplier = await getSupplier(id);
-    console.log(supplier);
-    txtUpdateId.value = supplier[0].supplier_id;
-    txtUpdateName.value = supplier[0].supplier_name;
-    txtUpdateAddress.value = supplier[0].supplier_address;
-    txtUpdateContact.value = supplier[0].supplier_contact;
-    txtUpdateDetails.value = supplier[0].supplier_details;
+async function selectProduct(id) {
+    const product = await getProduct(id);
+    console.log(product);
+    txtUpdateId.value = product[0].product_id;
+    txtUpdateName.value = product[0].product_name;
+    txtUpdateQuantity.value = product[0].product_quantity;
+    txtUpdatePrice.value = product[0].product_price;
+    txtSupplierId.value = product[0].fk_supplier_id;
 }
 
 function saveChanges(e) {
   e.preventDefault();
   const id = txtUpdateId.value;
-  putSupplier(id);
-  window.location.href = "https://gentle-anchorage-20332.herokuapp.com";
+  putProduct(id);
+  window.location.href = "https://gentle-anchorage-20332.herokuapp.com/inventory";
 }
 
 function postData(e) {
   e.preventDefault();
-  postSupplier();
-  window.location.href = "https://gentle-anchorage-20332.herokuapp.com";
+  postProduct();
+  window.location.href = "https://gentle-anchorage-20332.herokuapp.com/inventory";
 }
 
 init();
