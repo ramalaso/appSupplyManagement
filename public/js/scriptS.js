@@ -53,7 +53,7 @@ const putSupplier = (id) => {
       name: txtUpdateName.value,
       address: txtUpdateAddress.value,
       contact: txtUpdateContact.value,
-      details: stxtUpdateDetails.value,
+      details: txtUpdateDetails.value,
     })
   });
 }
