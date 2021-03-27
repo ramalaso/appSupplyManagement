@@ -64,9 +64,6 @@ const addSupplierToDOM = (supplier) => {
                 ></a
               >
               <a
-                href="#deleteProductModal"
-                class="delete"
-                data-toggle="modal"
                 ><i
                   class="material-icons"
                   data-toggle="tooltip"
