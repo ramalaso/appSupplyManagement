@@ -94,8 +94,9 @@ const getSupplier = async (id) => {
 
 async function selectSupplier(id) {
     const supplier = await getSupplier(id);
-    txtUpdateId.value = supplier.supplier_id;
-    txtUpdateName.value = supplier.supplier_name;
+    console.log(supplier);
+    txtUpdateId.value = supplier['supplier_id'];
+    txtUpdateName.value = supplier['supplier_name'];
     txtUpdateAddress.value = supplier.supplier_address;
     txtUpdateContact.value = supplier.supplier_contact;
     txtUpdateDetails.value = supplier.supplier_details;
