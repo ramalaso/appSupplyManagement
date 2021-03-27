@@ -13,10 +13,11 @@ const getSuppliers = async () => {
   return suppliers;
 };
 
-const removeSupplier = async (id) => {
-  const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers/'+id, { method: 'DELETE',});
-  const suppliers = await response.json();
-  return suppliers;
+const removeSupplier =  (id) => {
+  fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers/'+id, { method: 'DELETE',});
+  // const suppliers = await response.json();
+  // return suppliers;
+  window.location.href = "https://gentle-anchorage-20332.herokuapp.com";
 };
 
 const postSuppliers = async (name, address, contact, details) => {
