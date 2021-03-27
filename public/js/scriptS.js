@@ -15,11 +15,18 @@ const btnSaveChanges = document.getElementById("saveChanges");
 bntAddSuppliers.addEventListener('click', postData);
 btnSaveChanges.addEventListener('click', saveChanges)
 
+// Handle API responses
 const getSuppliers = async () => {
   const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers');
   const suppliers = await response.json();
   return suppliers;
 };
+
+const getSupplier = async (id) => {
+  const response = await fetch(`https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers/${id}`);
+  const supplier = await response.json();
+  return supplier;
+}
 
 const removeSupplier =  (id) => {
   fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers/'+id, { method: 'DELETE',});
@@ -58,6 +65,7 @@ const putSupplier = (id) => {
   });
 }
 
+//Working with DOM
 async function init() {
   const suppliers = await getSuppliers();
   console.log("We are in init function")
@@ -102,12 +110,6 @@ const addSupplierToDOM = (supplier) => {
   newRow = tableRef.insertRow(tableRef.rows.length);
   newRow.innerHTML = row;
 };
-
-const getSupplier = async (id) => {
-  const response = await fetch(`https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers/${id}`);
-  const supplier = await response.json();
-  return supplier;
-}
 
 async function selectSupplier(id) {
     const supplier = await getSupplier(id);
