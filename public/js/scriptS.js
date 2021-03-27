@@ -5,7 +5,7 @@ const supplier_contact = document.getElementById('addContact');
 const supplier_details = document.getElementById('addDetails');
 const bntAddSuppliers = document.getElementById('submitAdd');
 
-init();
+
 
 const getSuppliers = async () => {
   const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers');
@@ -77,5 +77,6 @@ const addSupplierToDOM = (supplier) => {
   newRow.innerHTML = row;
 };
 
-bntAddSuppliers.addEventListener('click', postSuppliers(supplier_name, supplier_address, supplier_contact, supplier_details));
+// bntAddSuppliers.addEventListener('click', postSuppliers(supplier_name, supplier_address, supplier_contact, supplier_details));
 
+init();
