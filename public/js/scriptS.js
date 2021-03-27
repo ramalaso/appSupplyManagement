@@ -5,7 +5,7 @@ const supplier_contact = document.getElementById("addContact");
 const supplier_details = document.getElementById("addDetails");
 const bntAddSuppliers = document.getElementById("submitAdd");
 
-bntAddSuppliers.addEventListener('click', postSupplier);
+bntAddSuppliers.addEventListener('click', postData);
 
 const getSuppliers = async () => {
   const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers');
@@ -20,8 +20,7 @@ const removeSupplier =  (id) => {
   window.location.href = "https://gentle-anchorage-20332.herokuapp.com";
 };
 
-const postSupplier = (e) => {
-  e.preventDefault();
+const postSupplier = () => {
   fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers', {
     method: 'POST',
     headers: {
@@ -34,7 +33,6 @@ const postSupplier = (e) => {
       details: supplier_details.value,
     })
   });
-  window.location.href = "https://gentle-anchorage-20332.herokuapp.com";
 }
 
 async function init() {
