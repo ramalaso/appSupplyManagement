@@ -1,9 +1,9 @@
 const tableRef = document.getElementsByTagName("tbody")[0];
-const supplier_name = document.getElementById('addName').innerText;
-const supplier_address = document.getElementById('addAddress').innerText;
-const supplier_contact = document.getElementById('addContact').innerText;
-const supplier_details = document.getElementById('addDetails').innerText;
-const bntAddSuppliers = document.getElementById('submitAdd');
+const supplier_name = document.getElementById("addName").innerText;
+const supplier_address = document.getElementById("addAddress").innerText;
+const supplier_contact = document.getElementById("addContact").innerText;
+const supplier_details = document.getElementById("addDetails").innerText;
+const bntAddSuppliers = document.getElementById("submitAdd");
 
 const getSuppliers = async () => {
   const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers');
