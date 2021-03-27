@@ -64,6 +64,7 @@ const addSupplierToDOM = (supplier) => {
                 ></a
               >
               <a
+                class="delete"
                 ><i
                   class="material-icons"
                   data-toggle="tooltip"
