@@ -17,8 +17,7 @@ router.get('/', function (req, res) {
       if (err) {
         console.log(err.stack)
       } else {
-        console.log(response.rows)
-        res.send(response)
+        res.send(response.rows)
       }
     })
   })
@@ -28,7 +27,7 @@ router.post('/', function(req, res, next) {
       if(err) {
         return console.error('error running query', err);
       }
-      res.send(result);
+      res.send(result.rows);
     });
   });
 //get one supplier
@@ -37,7 +36,7 @@ router.get('/:id', function(req, res, next) {
       if (err) {
         return console.error('error running query', err);
       }
-      res.send(result);
+      res.send(result.rows);
     });
   });
 // update supplier
@@ -46,7 +45,7 @@ router.put('/:id', function(req, res, next) {
       if (err) {
         return console.error('error running query', err);
       }
-      res.send(result);
+      res.send(result.rows);
     });
   });
 //delete one supplier
@@ -56,7 +55,7 @@ router.delete('/:id', function(req, res, next) {
       if (err) {
         return console.error('error running query', err);
       }
-      res.send(result);
+      res.send(result.rows);
     });
   });
 
