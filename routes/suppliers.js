@@ -24,7 +24,7 @@ router.get('/', function (req, res) {
   })
 //post supplier
 router.post('/', function(req, res, next) {
-    client.query('INSERT INTO suppliers(supplier_address ,supplier_name ,supplier_contact , supplier_details ) VALUES($1, $2, $3, $4) returning id', [req.body.address, req.body.name, req.body.contact, req.body.details ], function(err, result) {
+    client.query('INSERT INTO suppliers(supplier_address ,supplier_name ,supplier_contact , supplier_details ) VALUES($1, $2, $3, $4)', [req.body.address, req.body.name, req.body.contact, req.body.details ], function(err, result) {
       if(err) {
         return console.error('error running query', err);
       }
