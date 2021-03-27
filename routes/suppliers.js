@@ -13,7 +13,7 @@ const client = new Client({
 client.connect()
 
 router.get('/', function (req, res) {
-    client.query("SELECT * FROM suppliers", (err, response) => {
+    client.query("SELECT * FROM suppliers ORDER BY supplier_id", (err, response) => {
       if (err) {
         console.log(err.stack)
       } else {
