@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const app = express()
 const suppliers = require('./routes/suppliers');
+const products = require('./routes/products');
 
 
 const PORT = process.env.PORT || 5000
@@ -25,5 +26,6 @@ app.get('/inventory', (req, res)=>{
 })
 
 app.use('/api/v1/suppliers', suppliers)
+app.use('/api/v1/products', products)
 
 app .listen(PORT, () => console.log(`Listening on ${ PORT }`))
