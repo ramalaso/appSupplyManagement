@@ -95,11 +95,11 @@ const getSupplier = async (id) => {
 async function selectSupplier(id) {
     const supplier = await getSupplier(id);
     console.log(supplier);
-    txtUpdateId.value = supplier['supplier_id'];
-    txtUpdateName.value = supplier['supplier_name'];
-    txtUpdateAddress.value = supplier.supplier_address;
-    txtUpdateContact.value = supplier.supplier_contact;
-    txtUpdateDetails.value = supplier.supplier_details;
+    txtUpdateId.value = supplier[0].supplier_id;
+    txtUpdateName.value = supplier[0].supplier_name;
+    txtUpdateAddress.value = supplier[0].supplier_address;
+    txtUpdateContact.value = supplier[0].supplier_contact;
+    txtUpdateDetails.value = supplier[0].supplier_details;
 }
 
 function postData(e) {
