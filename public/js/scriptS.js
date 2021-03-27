@@ -1,8 +1,8 @@
 const tableRef = document.getElementsByTagName("tbody")[0];
-const supplier_name = document.getElementById('addName');
-const supplier_address = document.getElementById('addAddress');
-const supplier_contact = document.getElementById('addContact');
-const supplier_details = document.getElementById('addDetails');
+const supplier_name = document.getElementById('addName').innerText;
+const supplier_address = document.getElementById('addAddress').innerText;
+const supplier_contact = document.getElementById('addContact').innerText;
+const supplier_details = document.getElementById('addDetails').innerText;
 const bntAddSuppliers = document.getElementById('submitAdd');
 
 const getSuppliers = async () => {
