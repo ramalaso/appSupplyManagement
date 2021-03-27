@@ -4,7 +4,7 @@ const tableRef = document.getElementsByTagName("tbody")[0];
 const getSuppliers = async () => {
   const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers');
   const suppliers = await response.json();
-  return suppliers.rows;
+  return suppliers;
 };
 
 async function init() {
