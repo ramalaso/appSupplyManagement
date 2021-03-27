@@ -85,6 +85,7 @@ bntAddSuppliers.addEventListener('click', RedirectToMain);
 
 function RedirectToMain(e) {
   e.preventDefault();
+  console.log(supplier_name, supplier_address)
   postSupplier(supplier_name, supplier_address, supplier_contact, supplier_details)
   window.location.href = "https://gentle-anchorage-20332.herokuapp.com";
 }
