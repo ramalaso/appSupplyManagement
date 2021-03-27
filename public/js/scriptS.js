@@ -5,8 +5,6 @@ const supplier_contact = document.getElementById('addContact');
 const supplier_details = document.getElementById('addDetails');
 const bntAddSuppliers = document.getElementById('submitAdd');
 
-bntAddSuppliers.addEventListener('click', postSuppliers(supplier_name, supplier_address, supplier_contact, supplier_details));
-
 init();
 
 const getSuppliers = async () => {
@@ -79,4 +77,5 @@ const addSupplierToDOM = (supplier) => {
   newRow.innerHTML = row;
 };
 
+bntAddSuppliers.addEventListener('click', postSuppliers(supplier_name, supplier_address, supplier_contact, supplier_details));
 
