@@ -33,7 +33,7 @@ router.post('/', function(req, res, next) {
   });
 //get one supplier
 router.get('/:id', function(req, res, next) {
-    client.query('SELECT * FROM suppliers WHERE id = $1', [req.params.id], function(err, result) {
+    client.query('SELECT * FROM suppliers WHERE supplier_id = $1', [req.params.id], function(err, result) {
       if (err) {
         return console.error('error running query', err);
       }
