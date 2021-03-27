@@ -22,7 +22,7 @@ const getProducts = async () => {
 };
 
 const getProduct = async (id) => {
-  const response = await fetch(`https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers/${id}`);
+  const response = await fetch(`https://gentle-anchorage-20332.herokuapp.com/api/v1/products/${id}`);
   const product = await response.json();
   return product;
 }
