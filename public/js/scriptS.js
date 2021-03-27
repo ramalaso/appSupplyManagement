@@ -1,9 +1,9 @@
 const tableRef = document.getElementsByTagName("tbody")[0];
-const supplier_name = document.getElementById('addName');
+const supplier_name = document.getElementById('addName').value;
 const supplier_address = document.getElementById('addAddress');
-const supplier_contact = document.getElementById('addContact');
-const supplier_details = document.getElementById('addDetails');
-const bntAddSuppliers = document.getElementById('submitAdd');
+const supplier_contact = document.getElementById('addContact').value;
+const supplier_details = document.getElementById('addDetails').value;
+const bntAddSuppliers = document.getElementById('submitAdd').value;
 
 
 
