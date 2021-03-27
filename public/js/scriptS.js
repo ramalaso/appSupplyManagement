@@ -13,6 +13,12 @@ const getSuppliers = async () => {
   return suppliers;
 };
 
+const removeSuppliers = async (id) => {
+  const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers/'+id, { method: 'DELETE',});
+  const suppliers = await response.json();
+  return suppliers;
+};
+
 const postSuppliers = async (name, address, contact, details) => {
   const response = await fetch('https://gentle-anchorage-20332.herokuapp.com/api/v1/suppliers', {
     method: 'POST',
@@ -76,6 +82,7 @@ const addSupplierToDOM = (supplier) => {
   newRow = tableRef.insertRow(tableRef.rows.length);
   newRow.innerHTML = row;
 };
+
 
 // bntAddSuppliers.addEventListener('click', postSuppliers(supplier_name, supplier_address, supplier_contact, supplier_details));
 
